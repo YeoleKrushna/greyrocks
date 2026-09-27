@@ -53,6 +53,7 @@ const imageUrl = image.startsWith('http') ? image : `${siteConfig.domain}${image
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+    <meta name="google-site-verification" content={siteConfig.googleSiteVerification || "google-site-verification-placeholder"} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteConfig.companyName} />
     <meta property="og:title" content={title} />

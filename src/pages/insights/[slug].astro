@@ -15,8 +15,34 @@ const currentIndex = allPosts.findIndex((entry) => entry.id === post.id);
 const previous = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 const next = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 const related = allPosts.filter((entry) => entry.id !== post.id && (entry.data.category === post.data.category || entry.data.tags.some((tag) => post.data.tags.includes(tag)))).slice(0, 2);
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate || post.data.pubDate).toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: post.data.author,
+    url: 'https://greyrocks.in',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'GreyRocks',
+    url: 'https://greyrocks.in',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://greyrocks.in/brand/greyrocks-wordmark-dark.svg',
+    },
+  },
+  mainEntityOfPage: `https://greyrocks.in/insights/${post.id}`,
+  keywords: post.data.tags.join(', '),
+  articleSection: post.data.category,
+};
 ---
 <BaseLayout title={post.data.title} description={post.data.description} canonical={`https://greyrocks.in/insights/${post.id}`} ogType="article">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)}></script>
   <article class="article">
     <header class="article__header">
       <div class="eyebrow">{post.data.category}</div>

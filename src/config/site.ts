@@ -22,6 +22,7 @@ export const siteConfig = {
   },
   contactFormEndpoint: import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT ?? '',
   ogImage: '/og/greyrocks-og.png',
+  googleSiteVerification: import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ?? '',
 };
 
 export const hasConfiguredContactEmail = Boolean(siteConfig.contactEmail);

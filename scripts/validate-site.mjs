@@ -1,7 +1,8 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('..', import.meta.url));
 const required = [
   'package.json', 'astro.config.mjs', 'tsconfig.json', '.env.example', 'README.md', 'docs/design-system.md',
   'src/config/site.ts', 'src/data/careers.ts', 'src/data/work.ts', 'src/content.config.ts', 'src/styles/global.css', 'src/layouts/BaseLayout.astro',
