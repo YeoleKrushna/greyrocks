@@ -1,0 +1,49 @@
+---
+import { footerNavigation } from '../data/navigation';
+import Logo from './Logo.astro';
+import { siteConfig } from '../config/site';
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <Logo variant="light" />
+        <p>Software, AI, data and cloud engineering for organizations solving complex problems.</p>
+        <a class="footer-email" href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
+      </div>
+      <div class="footer-col">
+        <h3>Navigation</h3>
+        <ul>{footerNavigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/services/ai-intelligent-systems">AI & Intelligent Systems</a></li>
+          <li><a href="/services/web-software">Software Engineering</a></li>
+          <li><a href="/services/data-science">Data Science</a></li>
+          <li><a href="/services/backend-data">Backend & Data</a></li>
+          <li><a href="/services/cloud-devops">Cloud & DevOps</a></li>
+          <li><a href="/services/automation-integrations">Automation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Locations</h3>
+        <ul>
+          {siteConfig.officeLocations.map((office) => <li><a href="/about">{office.city}, {office.region}</a></li>)}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+          <li><a href="/cookies">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} GreyRocks. All rights reserved.</span>
+      <span>greyrocks.in</span>
+    </div>
+  </div>
+</footer>

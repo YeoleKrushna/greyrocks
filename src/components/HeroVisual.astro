@@ -1,0 +1,69 @@
+<div class="hero-visual-frame" data-hero-visual aria-hidden="true">
+  <div class="hero-orbit hero-orbit--outer"></div>
+  <div class="hero-orbit hero-orbit--inner"></div>
+  <svg class="data-rock" viewBox="0 0 620 620" focusable="false">
+    <defs>
+      <linearGradient id="cubeTop" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#315B86"/>
+        <stop offset="100%" stop-color="#264A70"/>
+      </linearGradient>
+      <linearGradient id="cubeLeft" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#173553"/>
+        <stop offset="100%" stop-color="#102542"/>
+      </linearGradient>
+      <linearGradient id="cubeRight" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#234A73"/>
+        <stop offset="100%" stop-color="#1D3E63"/>
+      </linearGradient>
+    </defs>
+
+    <circle cx="310" cy="310" r="232" fill="none" stroke="#D8C3A5" stroke-opacity=".16" stroke-width="1"/>
+
+    <g class="geo-frame" fill="none" stroke="#102542" stroke-opacity=".13" stroke-width="1">
+      <rect x="120" y="118" width="380" height="380" transform="rotate(-8 310 308)"/>
+      <rect x="146" y="90" width="328" height="430" transform="rotate(9 310 305)" stroke-opacity=".09"/>
+      <path d="M80 310H540" stroke-dasharray="1 11" stroke-linecap="round"/>
+      <path d="M310 72V548" stroke-dasharray="1 11" stroke-linecap="round"/>
+    </g>
+
+    <g class="geo-orbit" fill="none" stroke="#1E3A5F" stroke-opacity=".18" stroke-width="1.2">
+      <ellipse cx="310" cy="310" rx="236" ry="104" transform="rotate(-18 310 310)"/>
+    </g>
+
+    <g class="cube-group">
+      <path d="M310 132 456 216 310 300 164 216Z" fill="url(#cubeTop)"/>
+      <path d="M164 216 310 300v188l-146-84Z" fill="url(#cubeLeft)"/>
+      <path d="M310 300 456 216v188l-146 84Z" fill="url(#cubeRight)"/>
+
+      <path d="M310 132 456 216 310 300 164 216Z" fill="none" stroke="#17324F" stroke-width="1.6"/>
+      <path d="M164 216 310 300v188" fill="none" stroke="#D8C3A5" stroke-opacity=".7" stroke-width="1.35"/>
+      <path d="M456 216 310 300v188" fill="none" stroke="#D8C3A5" stroke-opacity=".65" stroke-width="1.35"/>
+      <path d="M310 132V300" fill="none" stroke="#D8C3A5" stroke-opacity=".35" stroke-width="1"/>
+
+      <path d="M164 216 310 300 456 216" fill="none" stroke="#C79C5A" stroke-width="2" stroke-linecap="round" stroke-opacity=".78"/>
+      <path d="M310 300v188" fill="none" stroke="#C79C5A" stroke-opacity=".66" stroke-width="1.5"/>
+
+      <g class="cube-node" fill="#C79C5A" stroke="#FAF8F5" stroke-width="3">
+        <circle cx="310" cy="132" r="6"/>
+        <circle cx="164" cy="216" r="5"/>
+        <circle cx="456" cy="216" r="5"/>
+        <circle cx="310" cy="300" r="7"/>
+        <circle cx="310" cy="488" r="5"/>
+      </g>
+    </g>
+
+    <g class="geo-connectors" fill="none" stroke="#C79C5A" stroke-width="1.6" stroke-linecap="round" stroke-opacity=".62">
+      <path d="M164 216 102 174"/>
+      <path d="M456 216 519 166"/>
+      <path d="M456 404 533 450"/>
+      <path d="M164 404 101 455"/>
+    </g>
+
+    <g class="geo-dots" fill="#102542">
+      <circle cx="104" cy="174" r="3"/>
+      <circle cx="519" cy="166" r="3"/>
+      <circle cx="533" cy="450" r="3"/>
+      <circle cx="101" cy="455" r="3"/>
+    </g>
+  </svg>
+</div>

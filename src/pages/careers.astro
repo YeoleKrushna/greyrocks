@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { careerAreas, openPositions } from '../data/careers';
+---
+<BaseLayout title="Careers" description="Careers and future opportunities at GreyRocks across software, AI, data, cloud, design and business development." canonical="https://greyrocks.in/careers">
+  <section class="page-hero"><div class="container page-hero__grid"><div><div class="eyebrow eyebrow--light">CAREERS</div><h1>Build difficult things with people who care about the details.</h1></div><div class="page-hero__aside"><p>GreyRocks is building a culture around engineering clarity, useful technology and a willingness to work through hard problems without unnecessary drama.</p></div></div></section>
+  <section class="section"><div class="container careers-grid"><div class="reveal"><SectionHeading eyebrow="WHY GREYROCKS" title="Small enough to stay close to the work." lede="The site does not list invented vacancies. As real openings are approved, they can be added to the careers data without changing the page structure." /></div><div class="careers-list">{careerAreas.map(({ title, description }, index) => <div class="careers-item reveal"><div class="careers-item__label">0{index+1}</div><h3>{title}</h3><p>{description}</p></div>)}</div></div></section>
+  <section class="section section--border-top"><div class="container grid-2"><div class="reveal"><div class="eyebrow">OPEN POSITIONS</div><h2>{openPositions.length ? 'Open positions' : 'No public openings are configured yet.'}</h2><p class="lede" style="margin-top:18px">Use the general application path to express interest, or add verified job postings to the careers data file when hiring is active.</p></div><div class="reveal" style="display:flex;align-items:end;justify-content:end"><a class="button button--primary" href="/contact?type=careers">General Application ↗</a></div></div></section>
+  <CTASection />
+</BaseLayout>

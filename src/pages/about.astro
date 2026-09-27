@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import { principles, technologyGroups } from '../data/content';
+import { services } from '../data/services';
+import { siteConfig } from '../config/site';
+---
+<BaseLayout title="About GreyRocks" description="About GreyRocks: a modern technology engineering company working across software, AI, data, cloud and automation." canonical="https://greyrocks.in/about">
+  <section class="page-hero"><div class="container page-hero__grid"><div><div class="eyebrow eyebrow--light">ABOUT GREYROCKS</div><h1>A technology company built around the engineering beneath the interface.</h1></div><div class="page-hero__aside"><p>GreyRocks is a modern technology engineering company focused on turning complex requirements into practical software, data and intelligent systems.</p></div></div></section>
+
+  <section class="section">
+    <div class="container editorial">
+      <div class="editorial__intro reveal"><div class="eyebrow">OUR MISSION</div><h2>Make serious technology easier to build, understand and evolve.</h2></div>
+      <div class="editorial__body reveal"><p class="lede">Good engineering is not about choosing the most impressive tool. It is about understanding the system well enough to make the right trade-offs: what needs to be deterministic, where AI adds value, how data should flow, what should be automated, and what needs to stay simple.</p><p style="margin-top:28px;max-width:68ch;color:var(--color-muted)">GreyRocks works across software engineering, AI, data science, backend systems, cloud infrastructure, automation and technology consulting. The company is headquartered in Pune, Maharashtra, India, with office presence in Bengaluru, Karnataka.</p></div>
+    </div>
+  </section>
+
+  <section class="section section--tint"><div class="container grid-2"><div class="reveal"><SectionHeading eyebrow="WHAT WE BELIEVE" title="Precision is a business advantage." lede="The same discipline that produces good software also produces clearer decisions: name the problem, define the boundary, choose the simplest viable path, then test what matters." /></div><div>{principles.map((p, i) => <div class="principle reveal"><div class="principle__number">0{i+1}</div><div class="principle__title">{p.title}</div><div class="principle__description">{p.description}</div></div>)}</div></div></section>
+
+  <section class="section section--border-bottom"><div class="container editorial"><div class="editorial__intro reveal"><div class="eyebrow">TECHNOLOGY PHILOSOPHY</div><h2>Use tools for their job.</h2></div><div class="editorial__body">{technologyGroups.map((g) => <div class="tech-row reveal"><div class="tech-row__label">{g.label}</div><div class="tech-row__items">{g.items.map(i => <span>{i}</span>)}</div></div>)}</div></div></section>
+
+  <section class="section section--border-top"><div class="container"><SectionHeading eyebrow="CAPABILITIES" title="A connected engineering practice." lede="GreyRocks can work at one layer of a system or across several when the problem crosses boundaries." /><div class="service-directory">{services.map((service) => <a class="service-row reveal" href={`/services/${service.slug}`}><div class="service-row__number">{service.number}</div><h3>{service.title}</h3><p>{service.value}</p></a>)}</div></div></section>
+
+  <section class="section"><div class="container"><SectionHeading eyebrow="LOCATIONS" title="Present where engineering happens." /><div class="locations">{siteConfig.officeLocations.map((office) => <div class="location-card reveal"><div class="location-card__label">{office.label}</div><div class="location-card__city">{office.city}</div><div class="location-card__region">{office.region}, {office.country}</div></div>)}</div></div></section>
+  <CTASection />
+</BaseLayout>

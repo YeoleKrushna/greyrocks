@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const categories = [...new Set(posts.map((post) => post.data.category))];
+  return categories.map((category) => ({ params: { category: category.toLowerCase().replaceAll(' ', '-') }, props: { category, posts } }));
+}
+
+const { category, posts } = Astro.props;
+const filtered = posts.filter((post) => post.data.category === category).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+<BaseLayout title={`${category} insights`} description={`GreyRocks insights in ${category}.`} canonical={`https://greyrocks.in/insights/category/${category.toLowerCase().replaceAll(' ', '-')}`}>
+  <section class="page-hero"><div class="container page-hero__grid"><div><div class="eyebrow eyebrow--light">CATEGORY</div><h1>{category}</h1></div><div class="page-hero__aside"><p>Articles collected under this topic.</p></div></div></section>
+  <section class="section"><div class="container"><div class="blog-grid">{filtered.map(post => <a class="blog-card reveal" href={`/insights/${post.id}`}><div class="blog-card__meta"><span>{post.data.category}</span><span>{post.data.readingTime}</span></div><h3>{post.data.title}</h3><p>{post.data.description}</p></a>)}</div></div></section>
+</BaseLayout>

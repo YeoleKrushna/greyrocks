@@ -1,0 +1,9 @@
+---
+import LegalTemplate from '../components/LegalTemplate.astro';
+const sections = [
+  { heading: '1. Cookie categories', paragraphs: ['Describe only the cookies and similar technologies actually used by the website. A static site may use few or none; do not add analytics or advertising categories until they exist.'], bullets: ['Essential operation, where required.', 'Preferences, where used.', 'Analytics or measurement, only when a verified tool is installed.'] },
+  { heading: '2. Consent and controls', paragraphs: ['Explain how visitors can manage non-essential cookies where consent is required. The final implementation should match the real consent mechanism.'] },
+  { heading: '3. Third parties', paragraphs: ['List any verified third-party services that place cookies or receive related technical information.'] },
+];
+---
+<LegalTemplate title="Cookie Policy" description="Cookie Policy template for GreyRocks." intro="This is an editable template. It does not claim that GreyRocks currently uses any particular cookie, analytics service or advertising platform." sections={sections} />

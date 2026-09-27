@@ -1,0 +1,25 @@
+---
+import { primaryNavigation } from '../data/navigation';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+const currentPath = Astro.url.pathname;
+---
+<header class="site-header" data-site-header>
+  <nav class="navbar" aria-label="Primary navigation">
+    <Logo variant="dark" />
+    <div class="nav-links">
+      {primaryNavigation.map((item) => (
+        <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </div>
+    <a class="button button--primary nav-cta" href="/contact">Start a Project <Icon name="arrow-up-right" /></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open menu" data-menu-toggle>
+      <span data-menu-icon-open><Icon name="menu" size={24} /></span>
+      <span data-menu-icon-close hidden><Icon name="close" size={24} /></span>
+    </button>
+  </nav>
+  <div id="mobile-navigation" class="mobile-nav" data-mobile-nav>
+    {primaryNavigation.map((item) => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
+    <a class="button button--primary" href="/contact">Start a Project <Icon name="arrow-up-right" /></a>
+  </div>
+</header>

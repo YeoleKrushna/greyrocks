@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
+
+interface Props { title: string; description: string; intro: string; sections: { heading: string; paragraphs: string[]; bullets?: string[] }[]; }
+const { title, description, intro, sections } = Astro.props;
+---
+<BaseLayout title={title} description={description} canonical={Astro.url.pathname}>
+  <section class="legal">
+    <div class="container legal__inner">
+      <div class="eyebrow">LEGAL</div>
+      <h1>{title}</h1>
+      <p class="legal__intro">{intro}</p>
+      <div class="legal__contact"><strong>Contact:</strong> <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a></div>
+      <div class="legal__body">
+        <!-- Legal pages are business templates. Legal counsel should review before publication. -->
+        {sections.map((section) => <section><h2>{section.heading}</h2>{section.paragraphs.map((p) => <p>{p}</p>)}{section.bullets && <ul>{section.bullets.map(b => <li>{b}</li>)}</ul>}</section>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

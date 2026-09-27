@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+import Icon from '../../components/Icon.astro';
+import { services } from '../../data/services';
+---
+<BaseLayout title="Services" description="GreyRocks services across web and software engineering, AI, data science, backend systems, cloud, automation and technology consulting." canonical="https://greyrocks.in/services">
+  <section class="page-hero"><div class="container page-hero__grid"><div><div class="eyebrow eyebrow--light">SERVICES</div><h1>Engineering disciplines for the system you need to build.</h1></div><div class="page-hero__aside"><p>Choose the capability closest to your problem. The work can stay focused on one layer or span the full system when the architecture calls for it.</p></div></div></section>
+  <section class="section"><div class="container"><div class="service-directory">{services.map((service) => <a class="service-row reveal" href={`/services/${service.slug}`}><div class="service-row__number">{service.number}</div><h3>{service.title}</h3><p>{service.value}</p><div class="service-row__arrow"><Icon name="arrow-up-right" /></div></a>)}</div></div></section>
+  <CTASection />
+</BaseLayout>

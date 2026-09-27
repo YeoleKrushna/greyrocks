@@ -1,0 +1,12 @@
+---
+import LegalTemplate from '../components/LegalTemplate.astro';
+const sections = [
+  { heading: '1. Scope', paragraphs: ['Use this section to define the website and services covered by the terms and any additional agreements that control particular engagements.'] },
+  { heading: '2. Use of the website', paragraphs: ['Describe acceptable use, prohibited activities and reasonable security expectations for visitors and users.'] },
+  { heading: '3. Intellectual property', paragraphs: ['Describe ownership and licensing of GreyRocks materials, third-party content, and customer deliverables. The exact allocation should come from signed engagement documents.'] },
+  { heading: '4. Disclaimers', paragraphs: ['Set out website-content disclaimers that are appropriate for the actual business and applicable law. Avoid blanket language that conflicts with negotiated agreements.'] },
+  { heading: '5. Limitation of liability', paragraphs: ['Insert the business-approved limitation and exclusions only after legal review.'] },
+  { heading: '6. Governing law', paragraphs: ['Replace the jurisdiction placeholder in site configuration and ensure it matches the actual contracting entity and legal advice.'] },
+];
+---
+<LegalTemplate title="Terms of Service" description="Terms of Service template for GreyRocks." intro="This is an editable business template. Commercial terms and legal provisions should be finalized for the actual GreyRocks entity before publication." sections={sections} />

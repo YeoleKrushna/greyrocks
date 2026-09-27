@@ -1,0 +1,11 @@
+---
+import LegalTemplate from '../components/LegalTemplate.astro';
+const sections = [
+  { heading: '1. Information we collect', paragraphs: ['This template describes categories of information a business may collect through website forms, communications and ordinary site operations. Replace this section with the exact practices used by GreyRocks before publication.'], bullets: ['Contact information submitted through an enquiry form.', 'Technical information needed to operate and secure the website, if collected.', 'Information voluntarily included in communications.'] },
+  { heading: '2. How information is used', paragraphs: ['Use this section to describe specific business purposes such as responding to enquiries, providing requested services, maintaining the website, and meeting legal obligations. Do not publish purposes that are not actually performed.'] },
+  { heading: '3. Retention and deletion', paragraphs: ['State the retention periods or decision criteria actually used for each data category. Include the process for deletion or access requests where applicable.'] },
+  { heading: '4. Sharing', paragraphs: ['List the categories of processors or service providers that may receive data. Name specific providers only after the live stack is confirmed.'] },
+  { heading: '5. Your choices', paragraphs: ['Describe the rights and choices that apply to your visitors based on the jurisdictions in which GreyRocks operates and the data practices actually used.'] },
+];
+---
+<LegalTemplate title="Privacy Policy" description="Privacy Policy template for GreyRocks." intro="This is an editable business template, not a statement of verified legal facts or current data-processing practices." sections={sections} />

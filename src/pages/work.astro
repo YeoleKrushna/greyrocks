@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import { workItems } from '../data/work';
+import Icon from '../components/Icon.astro';
+---
+<BaseLayout title="Work" description="Selected engineering work, concepts, prototypes and representative solution patterns from GreyRocks." canonical="https://greyrocks.in/work">
+  <section class="page-hero"><div class="container page-hero__grid"><div><div class="eyebrow eyebrow--light">WORK</div><h1>Selected engineering work.</h1></div><div class="page-hero__aside"><p>There are no fabricated client case studies here. This page is intentionally a place for capability demonstrations, internal prototypes and representative system patterns until verified client work is published.</p></div></div></section>
+  <section class="section"><div class="container"><div class="work-grid">{workItems.map((item) => <article class="work-card reveal"><div class="work-card__type">{item.label}</div><h3>{item.title}</h3><p>{item.summary}</p><a href="/contact" aria-label={`Discuss ${item.title}`}>Discuss a similar build <Icon name="arrow-up-right" /></a></article>)}</div></div></section>
+  <CTASection />
+</BaseLayout>

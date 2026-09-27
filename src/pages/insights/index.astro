@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Icon from '../../components/Icon.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const categories = [...new Set(posts.map((post) => post.data.category))].sort();
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
+---
+<BaseLayout title="Insights" description="Technical writing from GreyRocks on AI integration, RAG, data systems and practical software engineering." canonical="https://greyrocks.in/insights">
+  <section class="page-hero"><div class="container page-hero__grid"><div><div class="eyebrow eyebrow--light">INSIGHTS</div><h1>Technical writing for practical decisions.</h1></div><div class="page-hero__aside"><p>Notes on software engineering, AI, data and cloud. Written to clarify trade-offs and implementation choices rather than to sell a trend.</p></div></div></section>
+  <section class="section"><div class="container">
+    <SectionHeading eyebrow="LATEST" title="Ideas worth keeping close to the architecture." lede="The articles below are original editorial content for the GreyRocks knowledge base. Company-specific case claims are intentionally excluded." />
+    <div class="filters" aria-label="Insight categories">
+      <a class="filter" href="/insights">All</a>
+      {categories.map((category) => <a class="filter" href={`/insights/category/${encodeURIComponent(category.toLowerCase().replaceAll(' ', '-'))}`}>{category}</a>)}
+    </div>
+    <div class="blog-grid" style="margin-top:30px">
+      {posts.map((post) => (
+        <article class="blog-card reveal">
+          <div class="blog-card__meta"><span>{post.data.category}</span><span>{post.data.readingTime}</span></div>
+          <h3><a href={`/insights/${post.id}`}>{post.data.title}</a></h3>
+          <p>{post.data.description}</p>
+          <div class="blog-card__footer">
+            <div class="blog-card__tags">{post.data.tags.slice(0,3).map((tag) => <a class="blog-tag" href={`/insights/tag/${encodeURIComponent(tag.toLowerCase().replaceAll(' ', '-'))}`}>{tag}</a>)}</div>
+            <span aria-hidden="true"><Icon name="arrow-up-right" /></span>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="filters" style="margin-top:34px" aria-label="Insight tags">{tags.map((tag) => <a class="filter" href={`/insights/tag/${encodeURIComponent(tag.toLowerCase().replaceAll(' ', '-'))}`}>#{tag}</a>)}</div>
+  </div></section>
+</BaseLayout>

@@ -1,0 +1,9 @@
+---
+interface Props { variant?: 'light' | 'dark'; showWordmark?: boolean; }
+const { variant = 'dark', showWordmark = true } = Astro.props;
+const mark = variant === 'light' ? '/brand/greyrocks-mark-dark.svg' : '/brand/greyrocks-mark.svg';
+---
+<a class="brand" href="/" aria-label="GreyRocks home">
+  <img class="brand__mark" src={mark} alt="" width="40" height="40" />
+  {showWordmark && <span class="brand__name">GREYROCKS</span>}
+</a>

@@ -1,0 +1,12 @@
+{
+  "name": "GreyRocks",
+  "short_name": "GreyRocks",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F5",
+  "theme_color": "#FAF8F5",
+  "description": "Technology engineering for software, AI, data, cloud and automation.",
+  "icons": [
+    { "src": "/brand/greyrocks-mark-dark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

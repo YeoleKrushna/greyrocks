@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import HeroVisual from '../components/HeroVisual.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import { capabilities, technologyGroups, principles, processStages, solutionExamples } from '../data/content';
+import { siteConfig } from '../config/site';
+---
+<BaseLayout title="Digital engineering for ambitious businesses" description="GreyRocks builds software, AI, data and cloud solutions for organizations solving complex problems." canonical="https://greyrocks.in/">
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <div class="eyebrow">DIGITAL ENGINEERING • AI • DATA • CLOUD</div>
+        <h1>Engineering the digital systems <em>behind ambitious businesses.</em></h1>
+        <p class="lede hero__lede">GreyRocks builds software, AI, data and cloud solutions for organizations solving complex problems.</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="/contact">Start a Project <Icon name="arrow-up-right" /></a>
+          <a class="button button--outline" href="#capabilities">Explore Capabilities <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+      <div class="hero__visual"><HeroVisual /></div>
+    </div>
+  </section>
+
+  <section class="section section--border-bottom" id="capabilities">
+    <div class="container">
+      <SectionHeading eyebrow="CAPABILITIES" title="One engineering partner. Multiple disciplines." lede="We build the systems behind the interface: applications, APIs, data models, intelligent workflows, infrastructure and the connections between them." />
+      <div class="grid-3">
+        {capabilities.map((capability) => (
+          <a class="capability-card reveal" href={capability.number === '01' ? '/services/web-software' : capability.number === '02' ? '/services/ai-intelligent-systems' : capability.number === '03' ? '/services/data-science' : capability.number === '04' ? '/services/backend-data' : capability.number === '05' ? '/services/cloud-devops' : '/services/automation-integrations'}>
+            <div class="capability-card__top"><span>{capability.number}</span><span class="capability-card__icon"><Icon name={capability.icon} size={22} /></span></div>
+            <h3>{capability.title}</h3>
+            <p>{capability.description}</p>
+            <div class="capability-card__arrow"><Icon name="arrow-up-right" /></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--border-bottom">
+    <div class="container editorial">
+      <div class="editorial__intro reveal">
+        <div class="eyebrow">TECHNOLOGY DISCIPLINES</div>
+        <h2>Technology as a system, not a logo wall.</h2>
+        <p class="lede editorial__lede">A practical toolset is more useful than a long list of brands. The technologies shown here are the engineering building blocks behind the work GreyRocks offers.</p>
+      </div>
+      <div class="editorial__body">
+        {technologyGroups.map((group) => (
+          <div class="tech-row reveal">
+            <div class="tech-row__label">{group.label}</div>
+            <div class="tech-row__items">{group.items.map((item) => <span>{item}</span>)}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="container grid-2">
+      <div class="reveal">
+        <div class="eyebrow">WHY GREYROCKS</div>
+        <h2>Calm engineering for difficult problems.</h2>
+        <p class="lede why__lede">The goal is not to make technology sound complicated. It is to make the complicated parts understandable, useful and easier to operate.</p>
+      </div>
+      <div>
+        {principles.map((principle, index) => (
+          <div class="principle reveal">
+            <div class="principle__number">0{index + 1}</div>
+            <div class="principle__title">{principle.title}</div>
+            <div class="principle__description">{principle.description}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--border-bottom">
+    <div class="container">
+      <SectionHeading eyebrow="HOW WE WORK" title="A clear path from uncertainty to useful software." lede="The workflow is simple by design: understand the problem before choosing the tools, then build in a way that leaves room for the next requirement." />
+      <div class="timeline">
+        {processStages.map((stage) => (
+          <div class="timeline-item reveal"><div class="timeline-item__number">{stage.number}</div><h3>{stage.title}</h3><p>{stage.description}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="solutions">
+    <div class="container">
+      <SectionHeading eyebrow="SOLUTIONS" title="Examples of useful systems to build." aside="These are representative solution patterns, not claims about existing clients or delivered projects." />
+      <div class="solution-grid">
+        {solutionExamples.map((solution, index) => (
+          <div class="solution-card reveal"><div class="solution-card__number">{String(index + 1).padStart(2,'0')}</div><h3>{solution.title}</h3><p>{solution.description}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="locations">
+    <div class="container">
+      <SectionHeading eyebrow="LOCATIONS" title="Engineering from India." lede="GreyRocks is headquartered in Pune, with office presence in Bengaluru." />
+      <div class="locations">
+        {siteConfig.officeLocations.map((office) => (
+          <div class="location-card reveal"><div class="location-card__label">{office.label}</div><div class="location-card__city">{office.city}</div><div class="location-card__region">{office.region}, {office.country}</div></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--border-bottom">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">INSIGHTS</div>
+          <h2>Technical writing for practical decisions.</h2>
+        </div>
+        <a href="/insights" class="text-link">Explore Insights <Icon name="arrow-up-right" /></a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

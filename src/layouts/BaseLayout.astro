@@ -1,0 +1,189 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config/site';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteConfig.companyName,
+  url: siteConfig.domain,
+  logo: `${siteConfig.domain}/brand/greyrocks-wordmark-dark.svg`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: siteConfig.headquarters.city,
+    addressRegion: siteConfig.headquarters.region,
+    addressCountry: siteConfig.headquarters.country,
+  },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteConfig.companyName,
+  url: siteConfig.domain,
+};
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogType?: 'website' | 'article';
+  image?: string;
+  noindex?: boolean;
+}
+const {
+  title,
+  description = siteConfig.description,
+  canonical = Astro.url.href,
+  ogType = 'website',
+  image = siteConfig.ogImage,
+  noindex = false,
+} = Astro.props;
+const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteConfig.domain}${canonical}`;
+const imageUrl = image.startsWith('http') ? image : `${siteConfig.domain}${image}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#FAF8F5" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={siteConfig.companyName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <link rel="icon" href="/brand/greyrocks-mark-dark.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&display=swap" />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
+    <title>{title} | {siteConfig.companyName}</title>
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Navbar />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline>
+      (() => {
+        const header = document.querySelector('[data-site-header]');
+        const menuToggle = document.querySelector('[data-menu-toggle]');
+        const mobileNav = document.querySelector('[data-mobile-nav]');
+        const iconOpen = document.querySelector('[data-menu-icon-open]');
+        const iconClose = document.querySelector('[data-menu-icon-close]');
+        let lastFocused = null;
+
+        const setScrolled = () => header?.classList.toggle('is-scrolled', window.scrollY > 14);
+        setScrolled();
+        window.addEventListener('scroll', setScrolled, { passive: true });
+
+        const setMenu = (open) => {
+          if (!header || !menuToggle || !mobileNav) return;
+          header.classList.toggle('is-menu-open', open);
+          document.body.classList.toggle('menu-open', open);
+          menuToggle.setAttribute('aria-expanded', String(open));
+          menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+          if (iconOpen) iconOpen.hidden = open;
+          if (iconClose) iconClose.hidden = !open;
+          if (open) {
+            lastFocused = document.activeElement;
+            mobileNav.querySelector('a')?.focus();
+          } else {
+            lastFocused?.focus?.();
+          }
+        };
+
+        menuToggle?.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
+        mobileNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && header?.classList.contains('is-menu-open')) setMenu(false);
+        });
+
+        const revealItems = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+          revealItems.forEach((item) => observer.observe(item));
+        } else {
+          revealItems.forEach((item) => item.classList.add('is-visible'));
+        }
+
+        const heroVisual = document.querySelector('[data-hero-visual]');
+        if (heroVisual && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          heroVisual.addEventListener('pointermove', (event) => {
+            const rect = heroVisual.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - .5;
+            const y = (event.clientY - rect.top) / rect.height - .5;
+            heroVisual.style.setProperty('--hero-shift-x', `${(x * 8).toFixed(2)}px`);
+            heroVisual.style.setProperty('--hero-shift-y', `${(y * 6).toFixed(2)}px`);
+          });
+          heroVisual.addEventListener('pointerleave', () => {
+            heroVisual.style.setProperty('--hero-shift-x', '0px');
+            heroVisual.style.setProperty('--hero-shift-y', '0px');
+          });
+        }
+
+        const contactForm = document.querySelector('[data-contact-form]');
+        contactForm?.addEventListener('submit', async (event) => {
+          const endpoint = contactForm.getAttribute('data-endpoint') || '';
+          const status = contactForm.querySelector('[data-form-status]');
+          if (!endpoint) {
+            event.preventDefault();
+            if (status) {
+              status.hidden = false;
+              status.dataset.kind = 'error';
+              status.textContent = 'The contact endpoint is not configured yet. Add PUBLIC_CONTACT_FORM_ENDPOINT before publishing submissions.';
+            }
+            return;
+          }
+          event.preventDefault();
+          if (status) {
+            status.hidden = false;
+            status.dataset.kind = 'info';
+            status.textContent = 'Sending…';
+          }
+          try {
+            const response = await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
+            });
+            if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+            contactForm.reset();
+            if (status) {
+              status.dataset.kind = 'success';
+              status.textContent = 'Your message was sent to the configured endpoint.';
+            }
+          } catch {
+            if (status) {
+              status.dataset.kind = 'error';
+              status.textContent = 'The configured endpoint could not accept the message. Please verify the endpoint and try again.';
+            }
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const allPosts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const currentIndex = allPosts.findIndex((entry) => entry.id === post.id);
+const previous = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+const next = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+const related = allPosts.filter((entry) => entry.id !== post.id && (entry.data.category === post.data.category || entry.data.tags.some((tag) => post.data.tags.includes(tag)))).slice(0, 2);
+---
+<BaseLayout title={post.data.title} description={post.data.description} canonical={`https://greyrocks.in/insights/${post.id}`} ogType="article">
+  <article class="article">
+    <header class="article__header">
+      <div class="eyebrow">{post.data.category}</div>
+      <h1>{post.data.title}</h1>
+      <p class="lede" style="margin-top:18px">{post.data.description}</p>
+      <div class="article__meta"><span>{post.data.author}</span><span>{post.data.pubDate.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span><span>{post.data.readingTime}</span>{post.data.tags.map(tag => <span>#{tag}</span>)}</div>
+    </header>
+    <div class="article__body"><Content />
+      {related.length > 0 && <section style="margin-top:84px"><div class="eyebrow">RELATED</div><div class="blog-grid" style="margin-top:18px">{related.map(entry => <a class="blog-card" href={`/insights/${entry.id}`}><div class="blog-card__meta"><span>{entry.data.category}</span><span>{entry.data.readingTime}</span></div><h3>{entry.data.title}</h3><p>{entry.data.description}</p></a>)}</div></section>}
+      <section class="article-share" aria-labelledby="share-heading">
+        <div>
+          <div class="eyebrow" id="share-heading">SHARE</div>
+          <p class="form-help">Share this article with your team or save the link for later.</p>
+        </div>
+        <div class="article-share__actions">
+          <a class="button button--quiet" href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://greyrocks.in/insights/${post.id}`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Share ${post.data.title} on LinkedIn`}>LinkedIn <Icon name="arrow-up-right" /></a>
+          <a class="button button--quiet" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(`https://greyrocks.in/insights/${post.id}`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Share ${post.data.title} on X`}>X <Icon name="arrow-up-right" /></a>
+          <button class="button button--quiet" type="button" data-copy-link data-copy-url={`https://greyrocks.in/insights/${post.id}`}>Copy link</button>
+        </div>
+      </section>
+      <nav class="article__nav" aria-label="Article navigation">
+        {previous ? <a class="article-nav-card" href={`/insights/${previous.id}`}><div class="article-nav-card__dir">Previous</div><h3>{previous.data.title}</h3><Icon name="arrow-right" /></a> : <span></span>}
+        {next ? <a class="article-nav-card" href={`/insights/${next.id}`}><div class="article-nav-card__dir">Next</div><h3>{next.data.title}</h3><Icon name="arrow-right" /></a> : <span></span>}
+      </nav>
+    </div>
+  </article>
+  <script is:inline>
+    document.querySelector('[data-copy-link]')?.addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      const url = button.getAttribute('data-copy-url') || window.location.href;
+      try {
+        await navigator.clipboard.writeText(url);
+        button.textContent = 'Copied';
+        window.setTimeout(() => { button.textContent = 'Copy link'; }, 1800);
+      } catch {
+        button.textContent = 'Copy unavailable';
+      }
+    });
+  </script>
+</BaseLayout>

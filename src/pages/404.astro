@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+---
+<BaseLayout title="Page not found" description="The requested GreyRocks page could not be found." noindex>
+  <section class="page-hero"><div class="container page-hero__grid"><div><div class="eyebrow eyebrow--light">404 • SYSTEM RESPONSE</div><h1>That page doesn’t exist.</h1></div><div class="page-hero__aside"><p>The system could not find the destination you were looking for.</p><div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px"><a class="button button--primary" href="/">Back Home <Icon name="arrow-up-right" /></a><a class="button button--outline" href="/services">Explore Services <Icon name="arrow-right" /></a></div></div></div></section>
+  <section class="section"><div class="container" style="min-height:30vh;display:grid;place-items:center"><div style="font-size:12px;letter-spacing:.12em;color:var(--color-muted);text-transform:uppercase">GreyRocks / route not resolved</div></div></section>
+</BaseLayout>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">GreyRocks mark</title>
+  <desc id="desc">Isometric cube mark in light tones for dark backgrounds.</desc>
+  <path d="M32 4 54 16.5 32 29 10 16.5Z" fill="#5885BA" stroke="#FFFFFF" stroke-opacity=".3" stroke-width="0.75"/>
+  <path d="M10 16.5 32 29v25L10 41.5Z" fill="#1E3D66" stroke="#FFFFFF" stroke-opacity=".15" stroke-width="0.75"/>
+  <path d="M32 29 54 16.5v25L32 54Z" fill="#2E5584" stroke="#FFFFFF" stroke-opacity=".2" stroke-width="0.75"/>
+  <path d="M32 29v25" fill="none" stroke="#D8C3A5" stroke-opacity=".8" stroke-width="1.5"/>
+</svg>
