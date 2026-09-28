@@ -1,12 +1,120 @@
 ---
 import LegalTemplate from '../components/LegalTemplate.astro';
+
 const sections = [
-  { heading: '1. Scope', paragraphs: ['Use this section to define the website and services covered by the terms and any additional agreements that control particular engagements.'] },
-  { heading: '2. Use of the website', paragraphs: ['Describe acceptable use, prohibited activities and reasonable security expectations for visitors and users.'] },
-  { heading: '3. Intellectual property', paragraphs: ['Describe ownership and licensing of GreyRocks materials, third-party content, and customer deliverables. The exact allocation should come from signed engagement documents.'] },
-  { heading: '4. Disclaimers', paragraphs: ['Set out website-content disclaimers that are appropriate for the actual business and applicable law. Avoid blanket language that conflicts with negotiated agreements.'] },
-  { heading: '5. Limitation of liability', paragraphs: ['Insert the business-approved limitation and exclusions only after legal review.'] },
-  { heading: '6. Governing law', paragraphs: ['Replace the jurisdiction placeholder in site configuration and ensure it matches the actual contracting entity and legal advice.'] },
+  {
+    heading: '1. Acceptance of Terms & Legal Authority',
+    paragraphs: [
+      'These Terms of Service ("Terms") constitute a legally binding agreement between you ("you," "your," or "user") and GreyRocks ("GreyRocks," "we," "us," or "our"), governing your access to and use of https://greyrocks.in, including all associated subdomains, content, interactive components, and digital services provided thereon.',
+      'By accessing, browsing, or utilizing this website, you explicitly acknowledge that you have read, understood, and agreed to be bound by these Terms and our Privacy Policy. If you do not agree with any part of these Terms, you must immediately terminate access and discontinue use of the website.',
+      'If you are accessing or using this website on behalf of a corporation, partnership, or other legal entity, you represent and warrant that you possess the full legal authority to bind that organization to these Terms. In such case, "you" and "your" refer collectively to both you individually and the represented entity.'
+    ]
+  },
+  {
+    heading: '2. Permitted Use & Limited License',
+    paragraphs: [
+      'GreyRocks grants you a personal, revocable, non-exclusive, non-transferable, and limited license to access, view, and interact with the website solely for informational, discovery, and business evaluation purposes in connection with GreyRocks’ engineering capabilities, service offerings, and technical publications.',
+      'This license is strictly conditioned upon your continuous adherence to these Terms. Any unauthorized commercial exploitation, resale, redistribution, modification, or framing of website materials is expressly prohibited without prior written authorization from GreyRocks.'
+    ]
+  },
+  {
+    heading: '3. Prohibited Activities & Platform Integrity',
+    paragraphs: [
+      'To preserve the security, availability, and integrity of our digital infrastructure, you agree not to engage in any activity that interferes with or disrupts the website or its underlying networks. You expressly covenant that you will not:'
+    ],
+    bullets: [
+      'Automated Harvesting: Deploy automated tools, web crawlers, spiders, scrapers, data-mining scripts, or extraction engines to capture data, code, or content from greyrocks.in without express written permission.',
+      'Security Compromise: Probe, scan, or test the vulnerability of any system, network, firewall, or server, or breach authentication and access control mechanisms.',
+      'Malicious Code Injection: Transmit, upload, or inject viruses, worms, Trojan horses, logic bombs, ransomware, keystroke loggers, or other malicious, destructive, or technologically harmful code.',
+      'Disruption & Denial of Service: Initiate denial-of-service (DoS), distributed denial-of-service (DDoS), flood, ping, or packet attacks intended to degrade, slow, or incapacitate website performance.',
+      'Impersonation & Falsification: Impersonate any individual, corporate officer, or entity, misrepresent affiliations with GreyRocks, or submit fraudulent, deceptive, or misleading inquiry data.',
+      'Unsolicited Messaging: Use communication endpoints or contact forms on greyrocks.in for unauthorized advertising, commercial solicitation, promotional spam, or mass outreach.'
+    ]
+  },
+  {
+    heading: '4. Intellectual Property Rights & Ownership',
+    paragraphs: [
+      'The website, including but not limited to its layout, design language, graphic identity, software code, responsive stylesheets, visual assets, architecture diagrams, animations, logos, typography, service names, and editorial publications, is the sole and exclusive intellectual property of GreyRocks and its licensors.',
+      'All proprietary marks, including the name "GREYROCKS," the GreyRocks wordmark, stylized crests, and associated service emblems, are protected trademarks of GreyRocks under Indian and international intellectual property statutes. You are not granted any license or right to utilize our brand marks, logos, or domain names without prior written consent.',
+      'You may share links to our public technical articles and cite short textual passages, provided that clear and prominent attribution is given to GreyRocks, accompanied by a direct, functional hyperlink to the original canonical URL on https://greyrocks.in.'
+    ]
+  },
+  {
+    heading: '5. Distinction Between Website Use & Commercial Engagements',
+    paragraphs: [
+      'No engineering, consulting, software development, agency, partnership, joint venture, or client relationship is established solely by accessing greyrocks.in, submitting a project enquiry, or exchanging preliminary correspondence with our personnel.',
+      'All commercial engagements, custom software engineering deliverables, AI implementations, cloud migrations, and advisory services are governed exclusively by formal, individually negotiated, and mutually signed Master Services Agreements (MSAs), Statements of Work (SOWs), or written consulting contracts.',
+      'In the event of any irreconcilable conflict between the general terms on this website and a fully executed client agreement, the provisions of the executed commercial contract shall take absolute legal precedence.'
+    ]
+  },
+  {
+    heading: '6. Disclaimer of Technical Advice & Information Accuracy',
+    paragraphs: [
+      'The case patterns, technical articles, architecture paradigms, and engineering insights published on greyrocks.in are provided solely for general educational, illustrative, and informational purposes. Software architectures and data systems depend heavily on bespoke environmental, security, and workload constraints.',
+      'Nothing on this website constitutes certified engineering advice, architectural guarantees, legal counsel, or professional consulting opinions. Readers must conduct independent technical evaluation and due diligence before implementing architectural patterns in mission-critical or production systems.',
+      'While GreyRocks strives to ensure that published information is reliable and up to date, we make no representations or warranties, express or implied, regarding the accuracy, completeness, operational efficacy, or currentness of any content on the site.'
+    ]
+  },
+  {
+    heading: '7. Disclaimer of Warranties',
+    paragraphs: [
+      'TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE WEBSITE, ALL CONTENT, CODE, ASSETS, AND RELATED SERVICES ARE PROVIDED STRICTLY ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE.',
+      'GREYROCKS SPECIFICALLY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUIET ENJOYMENT, SYSTEM INTEGRATION, AND NON-INFRINGEMENT OF THIRD-PARTY INTELLECTUAL PROPERTY RIGHTS.',
+      'WE DO NOT WARRANT THAT ACCESS TO THE WEBSITE WILL BE CONTINUOUS, UNINTERRUPTED, TIMELY, SECURE, ACCURATE, OR ERROR-FREE, NOR DO WE WARRANT THAT DEFECTS WILL BE PROMPTLY CORRECTED OR THAT SERVERS ARE FREE OF VIRUSES, MALWARE, OR OTHER HARMFUL MECHANISMS.'
+    ]
+  },
+  {
+    heading: '8. Limitation of Liability',
+    paragraphs: [
+      'TO THE FULLEST EXTENT PERMITTED UNDER APPLICABLE LAW, IN NO EVENT SHALL GREYROCKS, ITS FOUNDERS, DIRECTORS, OFFICERS, EMPLOYEES, AFFILIATES, AGENTS, SUPPLIERS, OR LICENSORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, PUNITIVE, OR EXEMPLARY DAMAGES WHATSOEVER (INCLUDING DAMAGES FOR LOSS OF REVENUE, PROFITS, BUSINESS GOODWILL, DATA LOSS, CORRUPTION, SYSTEM DOWNTIME, OR REPUTATIONAL HARM), ARISING OUT OF OR IN CONNECTION WITH YOUR USE OR INABILITY TO USE THE WEBSITE, EVEN IF GREYROCKS HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.',
+      'TO THE MAXIMUM EXTENT PERMITTED BY LAW, GREYROCKS’ TOTAL CUMULATIVE AGGREGATE LIABILITY ARISING FROM OR RELATED TO THESE TERMS OR THE WEBSITE SHALL UNDER NO CIRCUMSTANCES EXCEED ONE THOUSAND INDIAN RUPEES (INR 1,000) OR THE TOTAL FEES PAID BY YOU TO GREYROCKS SPECIFICALLY FOR ACCESSING THIS WEBSITE DURING THE TWELVE (12) MONTHS PRECEDING THE CLAIM, WHICHEVER IS LESS (WHICH AMOUNT IS ZERO AS THE WEBSITE IS FREELY ACCESSIBLE).'
+    ]
+  },
+  {
+    heading: '9. Indemnification Obligations',
+    paragraphs: [
+      'You agree to defend, indemnify, and hold harmless GreyRocks, its parent, subsidiaries, affiliates, officers, directors, employees, contractors, agents, and licensors from and against any and all claims, liabilities, damages, judgments, awards, losses, costs, expenses, and reasonable attorneys’ fees arising out of or related to:',
+      '1. Your breach or violation of these Terms of Service or any incorporated policies;',
+      '2. Your unauthorized, unlawful, or abusive use of the website or its infrastructure;',
+      '3. Your infringement of any intellectual property, privacy, or proprietary rights belonging to GreyRocks or any third party; or',
+      '4. Any fraudulent or misleading information transmitted through our inquiry channels.'
+    ]
+  },
+  {
+    heading: '10. Third-Party Websites & External Hyperlinks',
+    paragraphs: [
+      'The website may contain hyperlinks directing visitors to third-party websites, software repositories (such as GitHub), social networks (such as LinkedIn or X), or reference documentation. These external links are provided solely as a convenience to our visitors.',
+      'GreyRocks maintains no editorial, technical, or legal control over external third-party sites and assumes no responsibility for their content, security posture, privacy practices, or terms of use. Accessing any third-party link is conducted entirely at your own discretion and risk.'
+    ]
+  },
+  {
+    heading: '11. Governing Law & Dispute Resolution',
+    paragraphs: [
+      'These Terms of Service, their interpretation, validity, and any dispute, claim, or controversy arising out of or relating to your use of this website shall be governed by, construed, and enforced in accordance with the substantive laws of the Republic of India, without regard to principles of conflicts of law.',
+      'You irrevocably agree that the competent courts having jurisdiction over Pune, Maharashtra, India, shall possess exclusive territorial and subject-matter jurisdiction to adjudicate and resolve any legal dispute, action, or proceeding arising under or in connection with these Terms or the website, and you expressly waive any objection based on forum non conveniens or improper venue.'
+    ]
+  },
+  {
+    heading: '12. Severability, Entire Agreement & Termination',
+    paragraphs: [
+      'If any court or administrative body of competent jurisdiction finds any provision of these Terms to be invalid, illegal, or unenforceable, such provision shall be severed or modified to the minimum extent necessary, and the remaining provisions shall continue in full legal force and effect.',
+      'These Terms of Service, along with our Privacy Policy and Cookie Policy, constitute the entire and integrated legal agreement between you and GreyRocks concerning website use, superseding all prior oral or written representations, discussions, or understandings.',
+      'GreyRocks reserves the unilateral right, without prior notice or liability, to suspend, terminate, or restrict your access to all or part of the website if you violate any provision of these Terms or engage in conduct detrimental to our systems, clients, or reputation.'
+    ]
+  },
+  {
+    heading: '13. Amendments & Inquiries',
+    paragraphs: [
+      'We reserve the right to amend or replace these Terms at our discretion. Any revisions become effective immediately upon posting to this URL with an updated Effective Date. Continued interaction with the site following amendments indicates your conclusive acceptance of the modified Terms.',
+      'If you have questions, concerns, or requests regarding these Terms of Service, please direct your correspondence to support@greyrocks.in.'
+    ]
+  }
 ];
 ---
-<LegalTemplate title="Terms of Service" description="Terms of Service template for GreyRocks." intro="This is an editable business template. Commercial terms and legal provisions should be finalized for the actual GreyRocks entity before publication." sections={sections} />
+<LegalTemplate
+  title="Terms of Service"
+  description="Official Terms of Service for GreyRocks: defining terms of website access, acceptable use, intellectual property, warranty disclaimers, liability limitations, and governing law."
+  intro="These Terms of Service delineate the legal framework and acceptable use standards governing access to and interaction with greyrocks.in and our digital engineering publications."
+  effectiveDate="September 28, 2026"
+  sections={sections}
+/>

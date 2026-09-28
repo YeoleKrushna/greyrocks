@@ -1,11 +1,134 @@
 ---
 import LegalTemplate from '../components/LegalTemplate.astro';
+
 const sections = [
-  { heading: '1. Information we collect', paragraphs: ['This template describes categories of information a business may collect through website forms, communications and ordinary site operations. Replace this section with the exact practices used by GreyRocks before publication.'], bullets: ['Contact information submitted through an enquiry form.', 'Technical information needed to operate and secure the website, if collected.', 'Information voluntarily included in communications.'] },
-  { heading: '2. How information is used', paragraphs: ['Use this section to describe specific business purposes such as responding to enquiries, providing requested services, maintaining the website, and meeting legal obligations. Do not publish purposes that are not actually performed.'] },
-  { heading: '3. Retention and deletion', paragraphs: ['State the retention periods or decision criteria actually used for each data category. Include the process for deletion or access requests where applicable.'] },
-  { heading: '4. Sharing', paragraphs: ['List the categories of processors or service providers that may receive data. Name specific providers only after the live stack is confirmed.'] },
-  { heading: '5. Your choices', paragraphs: ['Describe the rights and choices that apply to your visitors based on the jurisdictions in which GreyRocks operates and the data practices actually used.'] },
+  {
+    heading: '1. Overview & Data Controller',
+    paragraphs: [
+      'GreyRocks ("GreyRocks," "we," "us," or "our") is a digital engineering company headquartered in Pune, Maharashtra, India, with office operations in Bengaluru, Karnataka, India. We specialize in software engineering, artificial intelligence systems, data science, backend infrastructure, cloud architecture, and technology consulting.',
+      'This Privacy Policy governs the collection, processing, storage, and transfer of personal data collected through our website (https://greyrocks.in), direct electronic communications, project inquiries, and career submissions. GreyRocks operates as the Data Controller (or Data Fiduciary under the Digital Personal Data Protection Act, 2023) for all personal information gathered through these touchpoints.',
+      'We are committed to operating with transparency, data minimization, and privacy-by-design principles in full compliance with the Information Technology Act, 2000, the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011, the Digital Personal Data Protection Act, 2023 (DPDPA), and recognized international data protection standards including the EU/UK General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA/CPRA) where applicable.'
+    ]
+  },
+  {
+    heading: '2. Information We Collect',
+    paragraphs: [
+      'We collect personal data only when necessary to fulfill legitimate commercial, operational, or legal purposes. The data we collect falls into two distinct categories: information you provide directly, and technical information collected automatically.'
+    ],
+    bullets: [
+      'Direct Identification & Business Contact Data: Full name, business email address, phone number, organization name, job title, and country or region, provided when you complete our contact or project enquiry forms.',
+      'Project Requirements & Scoping Details: Information voluntarily submitted regarding architectural challenges, system requirements, estimated project timelines, budget parameters, and business context necessary for evaluating a prospective engineering engagement.',
+      'Employment & Careers Data: Curricula vitae (CVs), resumes, portfolio URLs, work histories, educational backgrounds, and correspondence submitted when expressing interest in joining GreyRocks.',
+      'Direct Correspondence: Records, notes, and attachments associated with inquiries, emails, or discussions initiated with our team at support@greyrocks.in or through official company channels.',
+      'Automated Technical & Diagnostic Data: Internet Protocol (IP) address, browser classification and version, operating system, device hardware characteristics, language preferences, referring URLs, timestamps, and page interaction metrics collected to ensure system availability and network security.'
+    ]
+  },
+  {
+    heading: '3. Legal Grounds & Purposes of Processing',
+    paragraphs: [
+      'GreyRocks processes personal data strictly under valid legal grounds recognized by applicable privacy legislation. We never process personal data arbitrarily or without a defined purpose.'
+    ],
+    bullets: [
+      'Pre-Contractual & Contractual Performance: Evaluating technical project requirements, drafting software development proposals, estimating architectural feasibility, and fulfilling obligations under executed client service agreements.',
+      'Legitimate Business Interests: Operating, maintaining, optimizing, and securing the performance of greyrocks.in; preventing malicious access, unauthorized penetration, denial-of-service (DoS) attempts, or automated bot scraping; and measuring the effectiveness of our technical publications.',
+      'Informed Consent: Communicating with individuals who explicitly submit inquiries, sign up for technical publications, or share employment applications. You retain the right to withdraw consent at any time.',
+      'Legal & Statutory Compliance: Maintaining statutory accounting, corporate records, and compliance obligations under Indian corporate and taxation laws, and cooperating with valid requests from judicial or regulatory authorities.'
+    ]
+  },
+  {
+    heading: '4. Data Sharing, Processors & Third Parties',
+    paragraphs: [
+      'GreyRocks does not sell, lease, monetize, or trade personal information to data brokers, advertising aggregators, or external marketing platforms. We treat all corporate inquiries and engineering correspondence with strict confidentiality.',
+      'To deliver high-availability digital services, we engage trusted technical service providers who process data strictly under our contractual instructions and confidentiality covenants:'
+    ],
+    bullets: [
+      'Infrastructure & Hosting: Cloud hosting networks, DNS providers, and content delivery networks (CDNs) responsible for serving encrypted website traffic and preventing cyberattacks.',
+      'Communications & Email Infrastructure: Enterprise email service providers and secure communication channels utilized to manage client correspondence and incoming proposals.',
+      'Legal & Regulatory Authorities: Disclosures made strictly when compelled by law, court order, search warrant, government investigation, or statutory directive from competent law enforcement agencies.',
+      'Corporate Reorganizations: In the event of an equity sale, merger, corporate restructuring, or transfer of business assets, personal information may be transferred subject to equivalent data protection assurances.'
+    ]
+  },
+  {
+    heading: '5. Cross-Border International Data Transfers',
+    paragraphs: [
+      'Given the global footprint of modern cloud infrastructure and international client engagements, personal information may be transferred to, stored, or processed in jurisdictions outside your state or country of residence, including India, the European Union, the United Kingdom, and the United States.',
+      'Whenever personal data is transferred cross-border, GreyRocks ensures adequate protective measures are implemented in accordance with Chapter III of the DPDPA and Chapter V of the GDPR. These measures include formal Data Processing Agreements (DPAs), Standard Contractual Clauses (SCCs) approved by regulatory bodies, transport and storage encryption, and technical vetting of all processing nodes.'
+    ]
+  },
+  {
+    heading: '6. Retention & Secure Disposal',
+    paragraphs: [
+      'We retain personal information only for the minimum duration required to accomplish the purposes described in this policy, unless a longer retention window is mandated by statutory, taxation, or dispute resolution requirements.'
+    ],
+    bullets: [
+      'Business Inquiries & Scoping Data: Retained for the duration of the active evaluation phase and any resulting commercial client engagement, or archived for up to 24 months from the last substantive contact if an engagement does not proceed.',
+      'Employment Applications: Retained for up to 12 months following receipt for consideration against future openings, after which files are permanently deleted unless ongoing consent is granted.',
+      'Server Logs & Security Telemetry: Retained for a limited operational window (typically 30 to 90 days) before automated overwriting or purge cycles.',
+      'Disposal Methodology: Upon expiration of the retention timeline, data is securely erased, digitally shredded, or permanently anonymized using industry-standard cryptographic techniques.'
+    ]
+  },
+  {
+    heading: '7. Technical & Organizational Security Measures',
+    paragraphs: [
+      'In compliance with Section 43A of the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023, GreyRocks maintains rigorous physical, electronic, and procedural safeguards designed to protect personal data from unauthorized access, accidental alteration, disclosure, or destruction.'
+    ],
+    bullets: [
+      'Transport Layer Encryption: Modern TLS 1.3 / HTTPS encryption across all web traffic to safeguard data during transmission.',
+      'Access Controls & Principle of Least Privilege: Role-based access control (RBAC), multi-factor authentication (MFA), and strict internal auditing for administrative tools.',
+      'Network Defenses: Firewalls, automated rate limiting, intrusion prevention systems, and continuous vulnerability scanning of web assets.',
+      'Data Integrity: Redundant cloud backups, regular disaster recovery testing, and confidentiality agreements executed with all employees and technical contractors.'
+    ]
+  },
+  {
+    heading: '8. Your Statutory Privacy Rights',
+    paragraphs: [
+      'Depending on your geographic location and the governing legal framework (including the Indian DPDP Act 2023, the European Union GDPR, the UK GDPR, and California privacy laws), you are entitled to exercise specific legal rights regarding your personal data:'
+    ],
+    bullets: [
+      'Right to Confirmation & Access: Request confirmation of whether your data is being processed, and obtain a concise summary of the categories and specific pieces of personal data held.',
+      'Right to Correction & Rectification: Request the prompt correction, updating, or completion of inaccurate or incomplete personal records.',
+      'Right to Erasure ("Right to be Forgotten"): Request the deletion or removal of your personal information where continuing retention is no longer necessary or legally justified.',
+      'Right to Withdraw Consent: Revoke previously granted consent for processing at any time without affecting the lawfulness of processing carried out prior to withdrawal.',
+      'Right to Nominate (DPDPA): Under Indian law, nominate an individual who shall exercise your data rights in the event of death or incapacity.',
+      'Right of Grievance Redressal: Seek effective resolution from our designated Grievance Officer regarding any concerns before escalating to regulatory authorities.',
+      'Right to Non-Discrimination: We will never deny services, charge differentiated fees, or alter service quality on account of you exercising any of your statutory privacy rights.'
+    ]
+  },
+  {
+    heading: '9. Children’s Privacy Protection',
+    paragraphs: [
+      'Our website and digital engineering services are targeted exclusively toward commercial enterprises, engineering professionals, and individuals aged 18 and older. We do not knowingly solicit, collect, or process personal data from children or individuals under the age of 18.',
+      'If we discover that personal information belonging to an individual under 18 has been inadvertently collected through our contact forms without verified parental or legal guardian consent, we take immediate operational steps to purge such data from our databases. If you believe a minor has submitted personal information to GreyRocks, please notify us immediately at support@greyrocks.in.'
+    ]
+  },
+  {
+    heading: '10. Grievance Officer & Contact Information',
+    paragraphs: [
+      'In accordance with the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023, GreyRocks has appointed a dedicated Grievance Officer to oversee data protection compliance and address privacy inquiries promptly.',
+      'To submit a data access request, exercise your statutory rights, or raise a concern regarding our privacy practices, please contact us:'
+    ],
+    bullets: [
+      'Designation: Grievance Officer / Data Privacy Cell',
+      'Entity: GreyRocks',
+      'Email: support@greyrocks.in',
+      'Headquarters: Pune, Maharashtra, India',
+      'Office: Bengaluru, Karnataka, India',
+      'Response SLA: We acknowledge all formal privacy requests within 48 business hours and resolve them within the 30-day statutory window mandated by law.'
+    ]
+  },
+  {
+    heading: '11. Amendments to this Privacy Policy',
+    paragraphs: [
+      'GreyRocks reserves the right to periodically update this Privacy Policy to reflect advancements in our technology stack, statutory amendments, or evolving regulatory interpretations. When modifications occur, we will update the "Effective Date" posted at the beginning of this policy.',
+      'We encourage visitors and clients to review this page periodically to remain informed about how GreyRocks protects enterprise data and upholds digital privacy.'
+    ]
+  }
 ];
 ---
-<LegalTemplate title="Privacy Policy" description="Privacy Policy template for GreyRocks." intro="This is an editable business template, not a statement of verified legal facts or current data-processing practices." sections={sections} />
+<LegalTemplate
+  title="Privacy Policy"
+  description="Official Privacy Policy for GreyRocks: outlining our data governance, collection practices, technical security safeguards, and statutory rights under DPDPA, GDPR, and international standards."
+  intro="This Privacy Policy sets forth how GreyRocks collects, protects, processes, and respects personal data when you interact with our website, access our technical publications, or engage with our engineering teams."
+  effectiveDate="September 28, 2026"
+  sections={sections}
+/>

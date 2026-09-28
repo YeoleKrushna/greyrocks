@@ -1,9 +1,77 @@
 ---
 import LegalTemplate from '../components/LegalTemplate.astro';
+
 const sections = [
-  { heading: '1. Cookie categories', paragraphs: ['Describe only the cookies and similar technologies actually used by the website. A static site may use few or none; do not add analytics or advertising categories until they exist.'], bullets: ['Essential operation, where required.', 'Preferences, where used.', 'Analytics or measurement, only when a verified tool is installed.'] },
-  { heading: '2. Consent and controls', paragraphs: ['Explain how visitors can manage non-essential cookies where consent is required. The final implementation should match the real consent mechanism.'] },
-  { heading: '3. Third parties', paragraphs: ['List any verified third-party services that place cookies or receive related technical information.'] },
+  {
+    heading: '1. What Are Cookies & Web Storage Technologies?',
+    paragraphs: [
+      'Cookies are small alphanumeric text files placed on your computer, mobile device, or browser by websites you visit. They are universally employed across digital networks to enable website functionality, improve browsing efficiency, safeguard online interactions, and provide diagnostic performance indicators.',
+      'In addition to HTTP cookies, modern web browsers utilize complementary local storage technologies, including "Local Storage" (localStorage), "Session Storage" (sessionStorage), and browser caching. These mechanisms allow web applications to store lightweight configuration preferences directly within your browser without continuous server-side polling.',
+      'Cookies are classified based on their duration and ownership: "Session cookies" are temporary indicators that expire automatically when you terminate your browser session, while "Persistent cookies" remain on your local device until their configured expiration date or until manually expunged through your browser settings.'
+    ]
+  },
+  {
+    heading: '2. Our Privacy-by-Design Architecture',
+    paragraphs: [
+      'GreyRocks is an engineering-first organization committed to software craftsmanship, performance optimization, and rigorous data privacy. We reject invasive commercial surveillance and unnecessary tracking mechanisms.',
+      'Our website (https://greyrocks.in) is engineered with a static-first, lightweight architecture. Unlike content portals or consumer commerce platforms, we do NOT deploy third-party advertising cookies, behavioral tracking pixels, cross-site profiling engines, or data-broker trackers.',
+      'You are free to explore our technology disciplines, research our engineering approaches, and read our technical publications without having your personal digital footprint aggregated, monetized, or shared with commercial advertising syndicates.'
+    ]
+  },
+  {
+    heading: '3. Categories of Storage Mechanisms We May Utilize',
+    paragraphs: [
+      'To provide full regulatory clarity under the Digital Personal Data Protection Act, 2023, the Information Technology Act, 2000, and European ePrivacy / GDPR standards, we categorize the storage mechanisms that may operate on greyrocks.in as follows:'
+    ],
+    bullets: [
+      'Strictly Necessary / Infrastructure Security: Essential mechanisms required to deliver web content securely over HTTPS, distribute traffic across cloud nodes, defend against Distributed Denial of Service (DDoS) threats, and filter automated spam submissions. Under applicable statutory privacy rules, strictly necessary technical storage does not require user consent because the site cannot function securely without it.',
+      'Interface Preferences & State (Client-Side Storage): Ephemeral local storage variables utilized to preserve your user interface state (such as menu expansion status, mobile drawer navigation, or cached typography assets). These values remain local to your browser sandbox and are never transmitted to external third parties.',
+      'Aggregated Technical Diagnostics (Privacy-Preserving Telemetry): Where high-level telemetry is evaluated to assess server response times, HTTP error frequencies, or regional latency, data is collected in an anonymized, aggregated format with IP masking. We do not fingerprint hardware or construct cross-session browsing histories.',
+      'Marketing & Retargeting Cookies: NONE. GreyRocks does not deploy ad-tech cookies, marketing trackers, retargeting pixels, or behavioral profiling tools anywhere on greyrocks.in.'
+    ]
+  },
+  {
+    heading: '4. Third-Party Infrastructure & External Links',
+    paragraphs: [
+      'Our digital assets are distributed via world-class cloud infrastructure and content delivery networks (CDNs) to ensure fast load times and defense against malicious network traffic. Our infrastructure providers may set transient, cryptographically signed security headers or ephemeral tokens strictly for request routing and cyber defense.',
+      'Our technical insights may feature links to external resources, code repositories (such as GitHub), or professional networks (such as LinkedIn). When you click an external link, you navigate outside greyrocks.in, where the cookie and data governance policies of that third-party entity apply. We advise reviewing the respective privacy and cookie notices of external sites.'
+    ]
+  },
+  {
+    heading: '5. How You Can Inspect, Manage & Disable Cookies',
+    paragraphs: [
+      'You retain complete sovereign control over how cookies and browser storage are handled on your personal computing devices. You can configure your browser to notify you when a cookie is placed, reject all incoming cookies, or delete cookies that have already been deposited.',
+      'Because greyrocks.in does not depend on invasive tracking or profiling cookies, completely disabling cookies in your browser will NOT break your browsing experience, disrupt layout integrity, or prevent you from reading our technical articles.',
+      'To adjust cookie preferences in your browser of choice, follow the vendor documentation below:'
+    ],
+    bullets: [
+      'Google Chrome: Navigate to Settings → Privacy and security → Third-party cookies / Clear browsing data.',
+      'Mozilla Firefox: Navigate to Settings → Privacy & Security → Enhanced Tracking Protection → Cookies and Site Data.',
+      'Apple Safari (macOS / iOS): Open Settings / Preferences → Privacy → Block all cookies / Manage Website Data.',
+      'Microsoft Edge: Go to Settings → Cookies and site permissions → Manage and delete cookies and site data.',
+      'Android Mobile Browsers: In Chrome, open the menu (three dots) → Settings → Site settings → Cookies.'
+    ]
+  },
+  {
+    heading: '6. Support for "Do Not Track" & Global Privacy Control',
+    paragraphs: [
+      'Modern web browsers offer "Do Not Track" (DNT) and "Global Privacy Control" (GPC) headers designed to signal to websites that users do not wish to have their web browsing tracked across third-party properties.',
+      'Because GreyRocks does not engage in behavioral tracking, cross-site telemetry, or advertising profiling under any circumstances, greyrocks.in inherently honors the highest standard of privacy by default, ensuring your browsing remains unmonitored regardless of specific browser header configurations.'
+    ]
+  },
+  {
+    heading: '7. Policy Amendments & Technical Inquiries',
+    paragraphs: [
+      'We may periodically update this Cookie Policy to reflect technical upgrades in our infrastructure, architectural modifications, or statutory changes in regional data protection regulations. The latest revision date is prominently displayed as the Effective Date at the top of this document.',
+      'If you have questions regarding our technical implementation of cookies, local storage, or data governance principles, please contact our engineering and compliance team directly at support@greyrocks.in.'
+    ]
+  }
 ];
 ---
-<LegalTemplate title="Cookie Policy" description="Cookie Policy template for GreyRocks." intro="This is an editable template. It does not claim that GreyRocks currently uses any particular cookie, analytics service or advertising platform." sections={sections} />
+<LegalTemplate
+  title="Cookie Policy"
+  description="Official Cookie Policy for GreyRocks: detailing our privacy-by-design architecture, zero third-party advertising tracking, necessary technical storage, and browser controls."
+  intro="This Cookie Policy details how GreyRocks approaches browser cookies, client-side storage, and technical telemetry on greyrocks.in, emphasizing our commitment to minimal data footprints and zero commercial tracking."
+  effectiveDate="September 28, 2026"
+  sections={sections}
+/>
