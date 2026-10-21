@@ -104,7 +104,7 @@ import Icon from '../components/Icon.astro';
     if (!isValidCertificateId(id)) {
       showState('not-found');
     } else {
-      const apiBase = (import.meta.env.PUBLIC_VERIFICATION_API_URL || 'https://greyrocks-verification-api.onrender.com').replace(/\/$/, '');
+      const apiBase = (import.meta.env.PUBLIC_VERIFICATION_API_URL || 'https://greyrocks-verification-api-dkx1.onrender.com').replace(/\/$/, '');
       fetch(`${apiBase}/api/verification/${encodeURIComponent(id)}`, { headers: { Accept: 'application/json' } })
         .then(async (response) => {
           if (response.status === 404) return showState('not-found');
